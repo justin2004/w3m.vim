@@ -682,8 +682,8 @@ function! s:keymap()
     nmap <buffer><CR>        <Plug>(w3m-click)
     nmap <buffer><S-CR>      <Plug>(w3m-shift-click)
     nmap <buffer><C-S-CR>    <Plug>(w3m-shift-ctrl-click)
-    nmap <buffer><TAB>       <Plug>(w3m-next-link)
-    nmap <buffer><S-TAB>     <Plug>(w3m-prev-link)
+    nmap <buffer><TAB>       <Plug>(w3m-next-link) <Plug>(w3m-show-link)
+    nmap <buffer><S-TAB>     <Plug>(w3m-prev-link) <Plug>(w3m-show-link)
     nmap <buffer><BS>        <Plug>(w3m-back)
     nmap <buffer><A-LEFT>    <Plug>(w3m-back)
     nmap <buffer><A-RIGHT>   <Plug>(w3m-forward)
@@ -995,7 +995,7 @@ endfunction
 
 function! s:tag_input_radio(tidx)
   redraw
-  " ‘¼‚Ì“¯‚¶name‚Ìechecked‚ğƒŠƒZƒbƒg
+  " Â‘Â¼Â‚ÃŒÂ“Â¯Â‚Â¶nameÂ‚ÃŒecheckedÂ‚Ã°ÂƒÂŠÂƒZÂƒbÂƒg
   for item in b:form_list
     if has_key(item.attr, 'type') && item.attr.type ==? 'radio'
       let item.edited = 1
@@ -1386,17 +1386,17 @@ function! s:decordeEntRef(str)
   let str = substitute(str, '&quot;',   '"', 'g')
   let str = substitute(str, '&#40;',    '(', 'g')
   let str = substitute(str, '&#41;',    ')', 'g')
-  let str = substitute(str, '&laquo;',  'á', 'g')
-  let str = substitute(str, '&raquo;',  'â', 'g')
+  let str = substitute(str, '&laquo;',  'ÂÃ¡', 'g')
+  let str = substitute(str, '&raquo;',  'ÂÃ¢', 'g')
   let str = substitute(str, '&lt;',     '<', 'g')
   let str = substitute(str, '&gt;',     '>', 'g')
   let str = substitute(str, '&amp;',    '\&','g')
   let str = substitute(str, '&yen;',    '\\','g')
-  let str = substitute(str, '&cent;',   '‘','g')
+  let str = substitute(str, '&cent;',   'ÂÂ‘','g')
   let str = substitute(str, '&copy;',   'c', 'g')
-  let str = substitute(str, '&middot;', 'E','g')
-  let str = substitute(str, '&mdash;',  '\','g')
-  let str = substitute(str, '&ndash;',  '\','g')
+  let str = substitute(str, '&middot;', 'ÂE','g')
+  let str = substitute(str, '&mdash;',  'Â\','g')
+  let str = substitute(str, '&ndash;',  'Â\','g')
   let str = substitute(str, '&apos;',   "'", 'g')
   return    substitute(str, '&nbsp;',   ' ', 'g')
 endfunction
